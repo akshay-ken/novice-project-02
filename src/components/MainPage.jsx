@@ -17,8 +17,9 @@ export function MainPage() {
   const [timeLeft, setTimeLeft] = useState(() => {
     return day * 86400 + hour * 3600 + minute * 60 + second;
   });
+  const [hasStarted, setHasStarted] = useState(false);
   const intervalRef = useRef(null);
-
+  //ai genterated useeffect hook is used so dont change logic for now.
   useEffect(() => {
     // Only start interval if timer is running and modal is closed
     if (timeLeft > 0 && !isOpen) {
@@ -39,6 +40,7 @@ export function MainPage() {
   function handleSubmit(event) {
     event.preventDefault();
     setTimeLeft(day * 86400 + hour * 3600 + minute * 60 + second);
+    setHasStarted(true);
     setIsOpen(false);
   }
   return (
@@ -94,6 +96,13 @@ export function MainPage() {
           >
             Close
           </button>
+        </Modal>
+      ) : null}
+      {hasStarted && timeLeft <= 0 ? (
+        <Modal>
+          <div className="flex bg-Dark-desaturated-blue flex-col items-center justify-center h-screen w-full">
+            <p className="text-4xl font-black text-Soft-red">Time Ended</p>
+          </div>
         </Modal>
       ) : null}
     </>
