@@ -1,6 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
 @import "tailwindcss";
 
+@layer base {
+  body {
+    background-image: url("./assets/images/bg-stars.svg"),
+      url("./assets/images/pattern-hills.svg");
+    background-repeat: repeat, no-repeat;
+    background-position: top left, bottom left;
+    background-size: auto, auto;
+    min-height: 100vh;
+
+    @apply bg-Very-dark-blue font-one;
+  }
+}
+
 @theme {
   --font-one: Red Hat Text;
   --color-Grayish-blue: hsl(237, 18%, 59%);
